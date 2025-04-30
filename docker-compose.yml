@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  auth_service:
+    build: ./auth_service
+    ports:
+      - "5001:5000"
+    environment:
+      - FLASK_ENV=development
+      - SECRET_KEY=supersecret
+      - JWT_SECRET_KEY=superjwt
+      - DATABASE=instance/armma.sqlite
+      - PYTHONPATH=/app
+    volumes:
+      - ./auth_service/instance:/app/instance
+
+  accounts_service:
+    build: ./accounts_service
+    ports:
+      - "5002:5000"
+    environment:
+      - FLASK_ENV=development
+      - SECRET_KEY=supersecret
+      - JWT_SECRET_KEY=superjwt
+      - DATABASE=instance/armma.sqlite
+      - PYTHONPATH=/app
+    volumes:
+      - ./auth_service/instance:/app/instance
+
+  transactions_service:
+    build: ./transactions_service
+    ports:
+      - "5003:5000"
+    environment:
+      - FLASK_ENV=development
+      - SECRET_KEY=supersecret
+      - JWT_SECRET_KEY=superjwt
+      - DATABASE=instance/armma.sqlite
+      - PYTHONPATH=/app
+    volumes:
+      - ./auth_service/instance:/app/instance
+
