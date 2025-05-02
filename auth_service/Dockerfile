@@ -1,18 +1,14 @@
 FROM python:3.11-slim
 
-# Set workdir în container
 WORKDIR /app
 
-# Copiază și instalează dependințele
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiază restul codului
-COPY app/ ./app
+COPY . .
 
-# Expune portul intern Flask
+ENV PYTHONPATH=/app
 EXPOSE 5000
 
-# Rulează aplicația Flask
-ENV PYTHONPATH=/app
-CMD ["python", "-m", "app"]
+CMD ["python", "__main__.py"]
+

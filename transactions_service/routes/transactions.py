@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_current_user
-from app.db.db import get_db
-from app.utils.response_formats import success_response, error_response, success_message_response
+from db.db import get_db
+from utils.response_formats import success_response, error_response, success_message_response
 
 bp = Blueprint("transactions", __name__)
 

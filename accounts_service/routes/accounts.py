@@ -5,8 +5,8 @@ from flask_jwt_extended import (
 import random
 import string
 
-from app.db.db import get_db
-from app.utils.response_formats import success_response, error_response, success_message_response
+from db.db import get_db
+from utils.response_formats import success_response, error_response, success_message_response
 
 bp = Blueprint("accounts", __name__)
 

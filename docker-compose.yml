@@ -13,6 +13,8 @@ services:
       - PYTHONPATH=/app
     volumes:
       - ./auth_service/instance:/app/instance
+    networks:
+      - kong-net
 
   accounts_service:
     build: ./accounts_service
@@ -26,6 +28,8 @@ services:
       - PYTHONPATH=/app
     volumes:
       - ./auth_service/instance:/app/instance
+    networks:
+      - kong-net
 
   transactions_service:
     build: ./transactions_service
@@ -39,4 +43,21 @@ services:
       - PYTHONPATH=/app
     volumes:
       - ./auth_service/instance:/app/instance
+    networks:
+      - kong-net
 
+  kong:
+    build: ./api_gateway
+    ports:
+      - "8000:8000"  # proxy (public routes)
+      - "8001:8001"  # admin API
+    depends_on:
+      - auth_service
+      - accounts_service
+      - transactions_service
+    networks:
+      - kong-net
+
+networks:
+  kong-net:
+    driver: bridge

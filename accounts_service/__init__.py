@@ -5,9 +5,9 @@ from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
-from app.routes.accounts import bp as accounts_bp
-from app.db.db import prepare_db
-from app.routes.accounts import init_jwt
+from routes.accounts import bp as accounts_bp
+from db.db import prepare_db
+from routes.accounts import init_jwt
 
 def create_app(test_config=None):
     app = Flask(__name__)

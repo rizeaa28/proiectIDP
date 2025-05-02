@@ -4,8 +4,8 @@ from flask_jwt_extended import (
 )
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app.db.db import get_db
-from app.utils.response_formats import success_response, error_response, success_message_response
+from db.db import get_db
+from utils.response_formats import success_response, error_response, success_message_response
 
 auth_bp = Blueprint("auth", __name__)
 

@@ -1,10 +1,12 @@
+-- Drop any existing data and create empty tables.
+
 DROP TABLE IF EXISTS banking_account;
 DROP TABLE IF EXISTS bank_transaction;
 
 CREATE TABLE banking_account (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   account_name TEXT NOT NULL,
-  user_id INTEGER NOT NULL,  -- schimbat de la username
+  username TEXT NOT NULL,
   balance INTEGER DEFAULT 0,
   is_frozen INTEGER DEFAULT 0,
   is_closed INTEGER DEFAULT 0,
@@ -20,4 +22,3 @@ CREATE TABLE bank_transaction (
   reason TEXT,
   transaction_time TEXT DEFAULT CURRENT_TIMESTAMP
 );
-

@@ -1,0 +1,25 @@
+_format_version: "3.0"
+services:
+  - name: auth-service
+    url: http://auth_service:5000
+    routes:
+      - name: auth
+        paths:
+          - /auth
+        strip_path: false
+
+  - name: accounts-service
+    url: http://accounts_service:5000
+    routes:
+      - name: accounts
+        paths:
+          - /accounts
+        strip_path: false
+
+  - name: transactions-service
+    url: http://transactions_service:5000
+    routes:
+      - name: transactions
+        paths:
+          - /transactions
+        strip_path: false
